@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AddStudentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -45,3 +46,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('/update/{id}', [TeacherController::class, 'updateTeacher'])->name('teacher.update');
     Route::get('/delete/{id}', [TeacherController::class, 'deleteTeacher'])->name('teacher.delete');
 });
+
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
